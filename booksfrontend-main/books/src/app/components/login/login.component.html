@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Bejelentkezés</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email cím</label>
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                            <div class="text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                                <small *ngIf="loginForm.get('email')?.errors?.['required']">Az email cím megadása kötelező</small>
+                                <small *ngIf="loginForm.get('email')?.errors?.['email']">Érvénytelen email cím</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Jelszó</label>
+                            <input type="password" class="form-control" id="password" formControlName="password">
+                            <div class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                                <small *ngIf="loginForm.get('password')?.errors?.['required']">A jelszó megadása kötelező</small>
+                            </div>
+                        </div>
+
+                        <div class="text-danger mb-3" *ngIf="errorMessage">
+                            {{ errorMessage }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+                                Bejelentkezés
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
