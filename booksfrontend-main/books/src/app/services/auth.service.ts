@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://pistike.moriczcloud.hu';
+  private apiUrl = 'https://fasirtguy.moriczcloud.hu';
   private userId: number | null = null;
 
   constructor(private http: HttpClient) { }
