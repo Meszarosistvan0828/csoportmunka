@@ -4,8 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BookDetailsComponent } from './book-details/book-details.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisztracioComponent } from './components/regisztracio/regisztracio.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
     BookListComponent,
     BookDetailsComponent,
     LoginComponent,
+    RegisztracioComponent,
   ],
   imports: [
     BrowserModule,

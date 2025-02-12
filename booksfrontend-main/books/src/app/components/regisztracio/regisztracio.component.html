@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Regisztráció</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Név</label>
+                            <input type="text" class="form-control" id="name" formControlName="name">
+                            <div class="text-danger" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+                                <small *ngIf="registerForm.get('name')?.errors?.['required']">A név megadása kötelező</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email cím</label>
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                            <div class="text-danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+                                <small *ngIf="registerForm.get('email')?.errors?.['required']">Az email cím megadása kötelező</small>
+                                <small *ngIf="registerForm.get('email')?.errors?.['email']">Érvénytelen email cím</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Jelszó</label>
+                            <input type="password" class="form-control" id="password" formControlName="password">
+                            <div class="text-danger" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                                <small *ngIf="registerForm.get('password')?.errors?.['required']">A jelszó megadása kötelező</small>
+                                <small *ngIf="registerForm.get('password')?.errors?.['minlength']">A jelszónak legalább 6 karakter hosszúnak kell lennie</small>
+                            </div>
+                        </div>
+
+                        <div class="text-danger mb-3" *ngIf="errorMessage">
+                            {{ errorMessage }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+                                Regisztráció
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
