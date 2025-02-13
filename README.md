@@ -7,6 +7,7 @@ GET `/login` email, password
 
 ## Books
 GET `/books` -> összes könyv JSON
+GET `/books/{id}` -> egy könyv adatai JSON
 
 GET `/books/search?query=Harry Potter` keresi a könyvet NÉV és SZERZŐ alapján -> találatok JSON
 
