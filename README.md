@@ -24,5 +24,4 @@ POST `loans/add` Új kölcsönzés hozzáadása
 paraméterek:
 - `user` felhasználó ID
 - `book` könyv ID
-- `date` lejárat dátuma
 

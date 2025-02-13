@@ -1,10 +1,13 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'book_detail_screen.dart';
+
 class Book {
+  final int id;
   final String title;
   final String author;
   final String description;
@@ -16,6 +19,7 @@ class Book {
   final List loans;
 
   Book({
+    required this.id,
     required this.title,
     required this.author,
     required this.description,
@@ -29,6 +33,7 @@ class Book {
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
+      id: json['id'] ?? 0,
       title: json['title'] ?? '',
       author: json['author'] ?? '',
       description: json['description'] ?? '',
@@ -206,6 +211,7 @@ class _BooksScreenState extends State<BooksScreen> {
                     itemCount: books.length,
                     itemBuilder: (context, index) {
                       final book = books[index];
+
                       return Card(
                         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                         child: ListTile(
@@ -247,6 +253,7 @@ class _BooksScreenState extends State<BooksScreen> {
                               // Star Rating Row
                               Row(
                                 children: [
+
                                   for (int i = 0; i < double.parse(book.rating).floor(); i++)
                                     Icon(Icons.star, color: Colors.amber, size: 20), // Full stars
 
@@ -280,9 +287,25 @@ class _BooksScreenState extends State<BooksScreen> {
 
                           isThreeLine: true,
                           onTap: () {
-                            // TODO: Add navigation to book details screen
-                            print('Book tapped: ${book.title}');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetailScreen(
+                                  id: book.id,
+                                  title: book.title,
+                                  author: book.author,
+                                  description: book.description,
+                                  imageUrl: book.imageUrl,
+                                  category: book.category,
+                                  available: book.available,
+                                  rating: double.parse(book.rating),
+                                  reviews: book.reviews,
+                                  loans: book.loans,
+                                ),
+                              ),
+                            );
                           },
+
                         ),
                       );
                     },

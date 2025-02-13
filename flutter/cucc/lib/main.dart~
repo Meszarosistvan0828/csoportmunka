@@ -1,6 +1,5 @@
 import 'package:cucc/screens/auth_screen.dart';
 import 'package:cucc/screens/books_screen.dart';
-import 'package:cucc/screens/loans_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -89,13 +88,9 @@ class _HomePageState extends State<HomePage> {
               ),
               onPressed: () {
                 // Add your first button action here
-
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => LoansScreen()),
-                      (Route<dynamic> route) => false,
-                );
+                print('Button 1 pressed');
               },
-              child: Text('Saját kölcsönzések', style: TextStyle(fontSize: 18)),
+              child: Text('Button 1', style: TextStyle(fontSize: 18)),
             ),
             SizedBox(height: 20),
             ElevatedButton(
@@ -105,13 +100,13 @@ class _HomePageState extends State<HomePage> {
               ),
               onPressed: () {
                 // Add your second button action here
-
+                print('Button 2 pressed');
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => BooksScreen()),
                       (Route<dynamic> route) => false,
                 );
               },
-              child: Text('Minden könyv', style: TextStyle(fontSize: 18)),
+              child: Text('Button 2', style: TextStyle(fontSize: 18)),
             ),
           ],
         ),
